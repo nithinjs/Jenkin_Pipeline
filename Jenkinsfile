@@ -15,7 +15,7 @@ pipeline {
             post {
                 success {
                     echo 'Build was successful'
-                    mail to: 'avanius8@gmail.com',
+                    mail to: 'nithinnn10@gmail.com, avanius8@gmail.com',
                     subject: "Birthday Wishes from your friend",
                     body: "Happy Birthday to you Avani (In advance)! May your day be filled with joy and laughter. Wishing you all the best on your special day! I'll order Full Kuzhimanthi for you. Only you can finish it whole. Enjoy your day!"
                     

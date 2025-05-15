@@ -3,7 +3,7 @@ pipeline {
     environment {
         DIRECTORY_PATH = 'c:/path/to/directory/demo'
         TESTING_ENVIRONMENT = 'SIT753/TestEnv'
-        PRODUCTION_ENVIRONMENT = 'Nithin Jayakumar Sarojam'
+        PRODUCTION_ENVIRONMENT = 'Nithin Jayakumar Sarojam (Nithin JS)'
     }
 
     stages {

@@ -13,7 +13,7 @@ pipeline {
             steps {
                 echo "Fetch the source code from the directory path: ${DIRECTORY_PATH}"
                 echo 'Compile the code and generate any necessary artefacts'
-                echo 'used Maven  to build the project'
+                echo 'used Maven to build the project'
             }
         }
 
@@ -21,8 +21,8 @@ pipeline {
             steps {
                 script {
                     try {
-                        sh 'echo "Running unit and integration tests..." > ${LOG_FILE}'
-                        sh 'echo "Used JUnit to run the tests." >> ${LOG_FILE}'
+                        sh "echo 'Running unit and integration tests...' > ${LOG_FILE}"
+                        sh "echo 'Used JUnit to run the tests.' >> ${LOG_FILE}"
                         currentBuild.result = 'SUCCESS'
                     } catch (err) {
                         currentBuild.result = 'FAILURE'
@@ -36,7 +36,8 @@ pipeline {
                         to: "${RECIPIENT}",
                         subject: "Test Stage Result - ${currentBuild.result}",
                         body: "Unit and Integration Tests completed with status: ${currentBuild.result}",
-                        attachmentsPattern: "${LOG_FILE}"
+                        attachmentsPattern: "${LOG_FILE}",
+                        mimeType: 'text/plain'
                     )
                 }
             }
@@ -54,8 +55,8 @@ pipeline {
             steps {
                 script {
                     try {
-                        sh 'echo "Performing security scan..." > ${LOG_FILE}'
-                        sh 'echo "Used SonarQube to perform the security scan." >> ${LOG_FILE}'
+                        sh "echo 'Performing security scan...' > ${LOG_FILE}"
+                        sh "echo 'Used SonarQube to perform the security scan.' >> ${LOG_FILE}"
                         currentBuild.result = 'SUCCESS'
                     } catch (err) {
                         currentBuild.result = 'FAILURE'
@@ -69,7 +70,8 @@ pipeline {
                         to: "${RECIPIENT}",
                         subject: "Security Scan Result - ${currentBuild.result}",
                         body: "Security Scan completed with status: ${currentBuild.result}",
-                        attachmentsPattern: "${LOG_FILE}"
+                        attachmentsPattern: "${LOG_FILE}",
+                        mimeType: 'text/plain'
                     )
                 }
             }
